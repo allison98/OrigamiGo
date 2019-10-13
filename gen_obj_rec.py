@@ -102,11 +102,12 @@ def ORB_detector(new_image, image_template):
     return len(matches)
 cap = cv2.VideoCapture(0)
 
+
 # Load our image template, this is our reference image
 print(os.path.isfile('RHEL-python-1569314-pixabay.jpg'))
 os.chdir(sys.path[0])
 print(os.listdir())
-image_template = cv2.imread('purse.jpeg', cv2.IMREAD_GRAYSCALE) 
+image_template = cv2.imread('./pics/purse.jpeg', cv2.IMREAD_GRAYSCALE) 
 print(image_template)
 # image_template = cv2.imread('images/kitkat.jpg', 0) 
 
