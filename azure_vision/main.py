@@ -2,7 +2,7 @@ import cv2
 import sys
 import threading
 
-from front_init_agent.python.predict import main as predmain
+from quick_train_tf_agent.python.predict import main as predmain
 
 class Camera:
     def __init__(self):
@@ -34,8 +34,6 @@ class Camera:
     # takes 3.5 seconds to complete each analysis
     def analysis(self, ret, frame):
         height, width = frame.shape[:2]
-        # print(height, width)
-        # print("success")
         cv2.imwrite("./frame%d.jpg" % ret, frame)
 
         prediction = predmain("./frame1.jpg")
@@ -44,7 +42,7 @@ class Camera:
             self.point1 = (0,0)
             self.point2 = (0,0)
             return 1
-        
+
         left = prediction['boundingBox']
         left = left["left"]
         top = prediction['boundingBox']
