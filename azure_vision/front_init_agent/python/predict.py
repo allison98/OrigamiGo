@@ -5,12 +5,14 @@
 # (4. if inference speed is too slow for you, try to make w' x h' smaller, which defined in object_detection.py DEFAULT_INPUT_SIZE)
 import sys
 import tensorflow as tf
+import os
 import numpy as np
 from PIL import Image
 from object_detection import ObjectDetection
 
-MODEL_FILENAME = 'model.pb'
-LABELS_FILENAME = 'labels.txt'
+
+MODEL_FILENAME = os.getcwd() + '\\front_init_agent\\model.pb'
+LABELS_FILENAME = os.getcwd() + '\\front_init_agent\\labels.txt'
 
 
 class TFObjectDetection(ObjectDetection):

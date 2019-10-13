@@ -1,2 +1,4 @@
 *.xml
 google-api-credentials
+*__pycache__*
+*.pyc
