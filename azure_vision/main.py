@@ -17,7 +17,7 @@ class Camera:
         while True:
             img_counter += 1
             ret, frame = cam.read()
-            print(self.point1)
+            # print(self.point1)
             cv2.rectangle(frame, self.point1, self.point2, 150, 10)
             cv2.imshow("test", frame)
             if(img_counter % 105 == 0):
@@ -34,15 +34,17 @@ class Camera:
     # takes 3.5 seconds to complete each analysis
     def analysis(self, ret, frame):
         height, width = frame.shape[:2]
-        print(height, width)
-        print("success")
+        # print(height, width)
+        # print("success")
         cv2.imwrite("./frame%d.jpg" % ret, frame)
 
         prediction = predmain("./frame1.jpg")
 
         if prediction == 0:
-            return
-
+            self.point1 = (0,0)
+            self.point2 = (0,0)
+            return 1
+        
         left = prediction['boundingBox']
         left = left["left"]
         top = prediction['boundingBox']
@@ -57,7 +59,7 @@ class Camera:
 
         self.point1 = (left, top)
         self.point2 = (int(left+(width_bb*width)), int(top+(height_bb*height)))
-        print(self.point1, self.point2)
+        # print(self.point1, self.point2)
         print("Over 50")
 
     def start(self):
