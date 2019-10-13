@@ -168,7 +168,7 @@ class OriDraw:
             self.message = 'Fold the left flap into the middle like shown on the screen'
         elif step_name == 'fourth_left':
             self.step = 4
-            self.message = 'Fold the right flap into the middle like shown on the '
+            self.message = 'Fold the right flap into the middle like shown on the screen'
         elif step_name =='fifth':
             self.step = 5
             self.message = 'Fold the top edges back to round the corners.'
