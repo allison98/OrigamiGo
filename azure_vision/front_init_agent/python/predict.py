@@ -8,7 +8,7 @@ import tensorflow as tf
 import os
 import numpy as np
 from PIL import Image
-from object_detection import ObjectDetection
+from front_init_agent.python.object_detection import ObjectDetection
 
 
 MODEL_FILENAME = os.getcwd() + '\\front_init_agent\\model.pb'
@@ -49,8 +49,13 @@ def main(image_filename):
 
     image = Image.open(image_filename)
     predictions = od_model.predict_image(image)
-    print(predictions)
-    return predictions
+   # print(predictions)
+    for i in range(len(predictions)):
+        if predictions[i]['probability'] > 0.7:
+            print(predictions[i])
+            return predictions[i]
+        else: 
+            return 0
 
 
 
