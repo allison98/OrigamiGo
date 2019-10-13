@@ -8,7 +8,7 @@ import tensorflow as tf
 import os
 import numpy as np
 from PIL import Image
-from azure_vision.quick_train_tf_agent.python.object_detection import ObjectDetection
+from object_detection import ObjectDetection
 
 MODEL_FILENAME = os.getcwd() + '\\quick_train_tf_agent\\model.pb'
 LABELS_FILENAME = os.getcwd() + '\\quick_train_tf_agent\\labels.txt'
