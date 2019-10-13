@@ -22,7 +22,8 @@ run from the repo
 `opencv-python`
 `tensorflow==1.14`
 `python 3.+ 64 bit`
-
+`pillow`
+`numpy`
 
 ## Development
 Currently, this project can teach you how to fold an origami heart step by step, guided by voice. In the future, we hope to show visual cues on the application using augmented/mixed reality as well as add more origami projects. 

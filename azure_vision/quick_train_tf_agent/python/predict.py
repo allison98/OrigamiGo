@@ -49,7 +49,7 @@ def main(image_filename):
     image = Image.open(image_filename)
     predictions = od_model.predict_image(image)
     for i in range(len(predictions)):
-        if predictions[i]['probability'] > 0.7:
+        if predictions[i]['probability'] > 0.6:
             print(predictions[i])
             return predictions[i]
         else: 
