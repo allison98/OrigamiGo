@@ -8,6 +8,7 @@ class Camera:
     def __init__(self):
         self.point1 = (0,0)
         self.point2 = (0,0)
+        self.step = 0
 
     # should be a smooth video experience
     def display_vid(self, cam):
@@ -55,9 +56,26 @@ class Camera:
         left = abs(int(width*left))
         top = abs(int(top*height))
 
+        step_name = prediction["tagId"]
+        if step_name == 'front_init' or step_name =='back_init':
+            self.step = 1
+        elif step_name == 'second':
+            self.step = 2
+        elif step_name == 'third':
+            self.step =3
+        elif step_name == 'fourth_left':
+            self.step = 4
+        elif step_name =='fifth':
+            self.step = 5
+        elif step_name =="finished":
+            self.step = 6
+        else:
+            self.step = 0
+
         self.point1 = (left, top)
         self.point2 = (int(left+(width_bb*width)), int(top+(height_bb*height)))
         # print(self.point1, self.point2)
+
         print("Over 50")
 
     def start(self):
