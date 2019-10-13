@@ -6,7 +6,6 @@ import predict
 cam = cv2.VideoCapture(0)
 cv2.namedWindow("test")
 
-
 # should be a smooth video experience
 def display_vid(cam):
     img_counter = 0
@@ -26,9 +25,23 @@ def display_vid(cam):
             break
 # takes 3.5 seconds to complete each analysis
 def analysis(ret,frame):
+    height, width = frame.shape[:2]
     print("success")
     cv2.imwrite("./frame%d.jpg" % ret, frame)
-    predict.main("./frame1.jpg")
+    prediction = predict.main("./frame1.jpg")
+
+    left = prediction['boundingBox'['Left']]
+    top = prediction['boundingBox']['Top']
+    width_bb = prediction['boundingBox']['Width']
+    height_bb = prediction['boundingBox']['Height']
+
+    left = width*left
+    top = top*height
+
+    point1 = (left, top)
+    point2 = (left+(width_bb*width), top+(height_bb*height))
+
+    cv2.rectangle(frame, point1, point2, 255, 3)
 
 
 display_vid(cam)
